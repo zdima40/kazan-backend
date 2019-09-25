@@ -1,5 +1,14 @@
-import express from 'express';
+import express, { Application } from 'express';
 
-const app = express();
+export class App {
+    private app: Application;
 
-app.listen(3000, () => console.log("Server is running on port 3000"));
+    public constructor(private port: number) {
+        this.app = express();
+    }
+
+    public async listen(): Promise<void> {
+        await this.app.listen(this.port);
+        console.log(`Server is running on port ${this.port}`);
+    }
+}
