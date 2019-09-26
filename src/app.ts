@@ -2,7 +2,7 @@ import express, { Application } from 'express';
 import logger from 'morgan';
 
 // Routes
-import IndexRoutes from '@routes/index';
+import IndexRoutes from './routes/index';
 
 export class App {
     private app: Application;
