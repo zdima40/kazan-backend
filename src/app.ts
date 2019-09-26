@@ -11,6 +11,7 @@ export class App {
         this.app = express();
         this.settings();
         this.middlewares();
+        this.routes();
     }
 
     private settings() {
