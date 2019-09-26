@@ -1,6 +1,9 @@
 import express, { Application } from 'express';
 import logger from 'morgan';
 
+// Routes
+import IndexRoutes from '@routes/index';
+
 export class App {
     private app: Application;
 
@@ -16,6 +19,10 @@ export class App {
 
     private middlewares() {
         this.app.use(logger('dev'));
+    }
+
+    private routes() {
+        this.app.use(IndexRoutes);
     }
 
     public async listen(): Promise<void> {
