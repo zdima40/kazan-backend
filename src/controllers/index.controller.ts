@@ -1,5 +1,9 @@
 import { Request, Response } from 'express';
 
-export function indexMain(request: Request, response: Response) {
-    return response.json("Hello World!");
+export function getMain(request: Request, response: Response) {
+    return response.redirect('/api');
+} 
+
+export function getApi(request: Request, response: Response) {
+    return response.json('web api');
 } 

@@ -1,8 +1,9 @@
 import { Router } from 'express';
-import { indexMain } from '../controllers/index.controller';
+import { getMain, getApi } from '../controllers/index.controller';
 
 const router = Router();
 
-router.route('/').get(indexMain);
+router.route('/').get(getMain);
+router.route('/api').get(getApi);
 
 export default router;

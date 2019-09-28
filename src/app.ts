@@ -1,8 +1,10 @@
 import express, { Application } from 'express';
 import logger from 'morgan';
+import methodOverride from 'method-override';
 
 // Routes
 import IndexRoutes from './routes/index';
+import ArticleRoutes from './routes/article';
 
 export class App {
     private app: Application;
@@ -20,10 +22,21 @@ export class App {
 
     private middlewares() {
         this.app.use(logger('dev'));
+        // parse application/x-www-form-urlencoded
+        this.app.use(express.urlencoded({ extended: false }))
+        this.app.use(methodOverride(function (req, res) {
+            if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+              // look in urlencoded POST bodies and delete it
+              var method = req.body._method
+              delete req.body._method
+              return method
+            }
+          }))
     }
 
     private routes() {
         this.app.use(IndexRoutes);
+        this.app.use(ArticleRoutes);
     }
 
     public async listen(): Promise<void> {
