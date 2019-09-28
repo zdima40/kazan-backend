@@ -28,5 +28,14 @@ export const ARTICLES: Article[] = [
         rating: 300,
         community: 'Лиза алерт'
     },
+    {
+        id: 4,
+        title: 'Поискова операция пропавшего в лесу',
+        content: 'Lorem ipsum kkk dolor sit amet consectetur, adipisicing elit. Dolores sint neque maxime nobis harum eum corrupti odio hic deserunt possimus, dolore sunt. Fugit ipsum similique sequi, quidem modi dolorum recusandae?',
+        date: new Date(),
+        author: 'Петров Петр',
+        rating: 300,
+        community: 'Лиза алерт'
+    },
 ];
 
