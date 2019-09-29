@@ -1,7 +1,6 @@
 import express, { Application } from 'express';
 import logger from 'morgan';
 import methodOverride from 'method-override';
-import cors from 'cors';
 
 // Routes
 import IndexRoutes from './routes/index';
@@ -24,7 +23,12 @@ export class App {
     private middlewares() {
         this.app.use(logger('dev'));
         this.app.use(express.urlencoded({ extended: false }));
-        this.app.use(cors());
+        // Add headers
+        this.app.use(function (req, res, next) {
+            res.setHeader('Access-Control-Allow-Origin', '*');
+            res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+            next();
+        });
         this.app.use(methodOverride(function (req, res) {
             if (req.body && typeof req.body === 'object' && '_method' in req.body) {
               // look in urlencoded POST bodies and delete it

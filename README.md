@@ -7,8 +7,6 @@ This project was generated with:
 - nodemon: 1.19.2,
 - ts-node: 8.4.1,
 - typescript: 3.6.3,
-- cors": "2.8.5
-
 
 ## Development server
 
